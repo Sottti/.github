@@ -10,6 +10,8 @@ assignees: ""
 Use a concise title that describes the work, following the shared title rules:
 https://github.com/Sottti/.github/blob/main/CONTRIBUTING.md#issue-and-pull-request-titles
 Use the group's uppercase theme prefix for coordinated issues.
+For umbrella issues, begin the title with `[U] ` before the theme prefix:
+`[U] THEME PREFIX: Umbrella issue summary`. Other issues omit `[U]`.
 Assign the issue's actual author
 and choose at least one durable classification label using GitHub metadata.
 Replace the prompts before submitting. Keep proposals and open questions

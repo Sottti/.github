@@ -2,7 +2,8 @@
 Follow the shared title rules:
 https://github.com/Sottti/.github/blob/main/CONTRIBUTING.md#issue-and-pull-request-titles
 Match the associated issue's title as closely as scope permits, keeping
-its group prefix when present. Without an issue, use a concise change title.
+its group prefix when present and omitting the issue-only `[U]` marker.
+Without an issue, use a concise change title.
 Replace the prompts and remove unused optional sections.
 Describe the final change for someone unfamiliar with the discussion.
 Follow the repository's contribution and verification guidance.
