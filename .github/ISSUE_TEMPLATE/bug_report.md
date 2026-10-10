@@ -7,7 +7,10 @@ assignees: ""
 ---
 
 <!--
-Use a concise title that describes the failure. Assign the issue's actual
+Use a concise title that describes the failure, following the shared title rules:
+https://github.com/Sottti/.github/blob/main/CONTRIBUTING.md#issue-and-pull-request-titles
+Use the group's uppercase theme prefix for coordinated issues.
+Assign the issue's actual
 author using GitHub metadata; add relevant durable classification labels
 alongside Bug when useful. Replace the prompts before submitting.
 If the failure itself is unconfirmed, use Task for an investigation.
