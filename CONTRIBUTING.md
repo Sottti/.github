@@ -26,11 +26,27 @@ TEST RULES REVIEW: Align local and instrumentation test conventions
 
 The uppercase rule applies to the theme prefix, not the individual summary.
 
+An umbrella issue coordinates a group of related issues. Its title must begin
+with the literal marker `[U]` followed by one space, before any theme prefix.
+Keep the group's existing uppercase theme prefix and colon after the marker:
+
+```text
+[U] THEME PREFIX: Umbrella issue summary
+```
+
+For example:
+
+```text
+[U] TEST RULES REVIEW: Align test conventions across repositories
+```
+
+Only umbrella issues use `[U]`; other issues keep the normal title format.
+
 A PR title matches its associated issue title as closely as its scope permits,
-preserving the shared uppercase theme prefix when present. Use the same title
-when the issue and PR scopes match. For a partial or narrower implementation,
-keep the relevant group prefix and adjust the descriptive portion to state
-what the PR delivers.
+preserving the shared uppercase theme prefix when present and omitting the
+issue-only `[U]` marker. Otherwise, use the same title when the issue and PR
+scopes match. For a partial or narrower implementation, keep the relevant group
+prefix and adjust the descriptive portion to state what the PR delivers.
 
 Without an associated issue, use a concise title summarizing the PR's change.
 There is no need to create an issue solely for naming.
