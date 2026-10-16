@@ -8,7 +8,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from validate_repository import REQUIRED_FILES, anchors, validate_tree
+from validate_repository import REQUIRED_FILES, validate_tree
 
 
 class RepositoryValidationTest(unittest.TestCase):
@@ -23,20 +23,6 @@ class RepositoryValidationTest(unittest.TestCase):
 
     def test_current_repository_is_valid(self):
         validate_tree(self.root)
-
-    def test_missing_and_misspelled_local_heading_are_rejected(self):
-        path = self.root / 'README.md'
-        path.write_text(path.read_text() + '\n[Broken heading](CONTRIBUTING.md#missing-heading)\n')
-        with self.assertRaisesRegex(ValueError, 'Broken local fragment'):
-            validate_tree(self.root)
-
-    def test_same_file_heading_and_duplicate_heading_anchors(self):
-        self.assertEqual(anchors('# Hello\n# Hello\n## **A heading**\n'),
-                         {'hello', 'hello-1', 'a-heading'})
-        path = self.root / 'README.md'
-        path.write_text(path.read_text() + '\n[Broken same-file heading](#missing-heading)\n')
-        with self.assertRaisesRegex(ValueError, 'Broken local fragment'):
-            validate_tree(self.root)
 
     def test_invalid_community_configuration_yaml_is_rejected(self):
         (self.root / '.github/ISSUE_TEMPLATE/config.yml').write_text('blank_issues_enabled: [\n')

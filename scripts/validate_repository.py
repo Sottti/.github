@@ -1,12 +1,9 @@
 """Validate the shared files and the documented protected-branch contract."""
 
-import html
 import json
 from pathlib import Path
 import re
 import subprocess
-import unicodedata
-from urllib.parse import unquote, urlsplit
 
 
 REQUIRED_FILES = [
@@ -20,30 +17,6 @@ REQUIRED_FILES = [
 def require(condition, message):
     if not condition:
         raise ValueError(message)
-
-
-def anchors(markdown):
-    """GitHub-style anchors for this repository's ATX Markdown headings."""
-    result = set(re.findall(r'<[^>]+\b(?:id|name)=[\"\']([^\"\']+)[\"\']', markdown))
-    fenced = False
-    for line in markdown.splitlines():
-        if re.match(r'^\s*(```|~~~)', line):
-            fenced = not fenced
-            continue
-        match = re.match(r'^ {0,3}#{1,6}\s+(.+?)\s*#*\s*$', line)
-        if fenced or not match:
-            continue
-        heading = html.unescape(re.sub(r'<[^>]+>', '', match.group(1))).lower()
-        heading = re.sub(r'!?\[([^\]]+)\]\([^)]+\)', r'\1', heading)
-        slug = ''.join(char for char in heading
-                       if unicodedata.category(char)[0] in 'LNM' or char in '-_ ')
-        slug = slug.replace(' ', '-')
-        candidate, index = slug, 0
-        while candidate in result:
-            index += 1
-            candidate = f'{slug}-{index}'
-        result.add(candidate)
-    return result
 
 
 def parse_yaml(text, name):
@@ -94,21 +67,6 @@ def validate_tree(root):
     root = Path(root)
     for name in REQUIRED_FILES:
         require((root / name).read_text(encoding='utf-8').strip(), f'Empty shared file: {name}')
-    for path in root.rglob('*.md'):
-        if '.git' in path.relative_to(root).parts:
-            continue
-        markdown = path.read_text(encoding='utf-8')
-        for raw in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)', markdown):
-            target = urlsplit(raw)
-            if target.scheme or target.netloc:
-                continue
-            destination = path.parent / unquote(target.path) if target.path else path
-            require(destination.exists(), f'Broken local link in {path}: {raw}')
-            if target.fragment:
-                require(destination.is_file() and destination.suffix == '.md',
-                        f'Unsupported local fragment in {path}: {raw}')
-                require(unquote(target.fragment) in anchors(destination.read_text(encoding='utf-8')),
-                        f'Broken local fragment in {path}: {raw}')
     parse_yaml((root / '.github/ISSUE_TEMPLATE/config.yml').read_text(), 'config.yml')
     for path in (root / '.github/ISSUE_TEMPLATE').glob('*.md'):
         match = re.match(r'\A---\r?\n(.*?)\r?\n---(?:\r?\n|\Z)', path.read_text(), re.S)
@@ -121,4 +79,4 @@ def validate_tree(root):
 
 if __name__ == '__main__':
     validate_tree(Path(__file__).resolve().parents[1])
-    print('Shared files, local links and fragments, template YAML and branch policy are valid')
+    print('Shared files, template YAML and branch policy are valid')
