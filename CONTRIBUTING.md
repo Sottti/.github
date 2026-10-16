@@ -63,3 +63,14 @@ these title rules while retaining repository-specific policies.
 Templates and this guide provide creation guidance; they do not automatically
 enforce title wording or install agent instructions or workflows in other
 repositories.
+
+## Protected branches and merge requirements
+
+Follow the [common branch protection policy](branch-protection/README.md).
+Use pull requests for the default branch and `develop`, pass the repository's
+required CI checks against the current base, and address review feedback before
+merging. Resolve completed inline review threads; handle top-level comments
+explicitly as well. Do not bypass unmet gates.
+
+Apply the policy when setting up a new repository: GitHub does not inherit
+branch rules from this defaults repository or from an app template.
