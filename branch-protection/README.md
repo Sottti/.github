@@ -26,7 +26,7 @@ them. A workflow's display name is not necessarily its job's check name.
 | Morylia-Dashboard-Web | verify: dashboard build, validators and Node tests |
 | Morylia-Dashboard-Data | verify: tracked JSON syntax, unique keys and finite constants |
 | Android-Interview-Practice | verify: content checks, TypeScript, production build and artifact privacy |
-| .github | verify: shared files, relative links and policy JSON |
+| .github | verify: shared files, local links and fragments, YAML and policy JSON |
 
 The Data check validates JSON syntax; it does not replace the canonical data
 contract's schema and publication checks. Morylia's local readiness and review
@@ -41,7 +41,7 @@ contents. Account-wide branch rulesets are an organization feature.
 After initializing a new repository:
 
 1. Add meaningful CI that runs on every pull request, including documentation
-   changes. Prefer a stable final job called `verify`; it must fail if any
+   changes, and supports manual dispatch on an exact branch tip. Prefer a stable final job called `verify`; it must fail if any
    required build or test fails, rather than skip or report success.
 2. Import [ruleset.json](ruleset.json) under Settings, Rules, Rulesets, or use
    the GitHub CLI from this repository's checkout:
@@ -57,10 +57,15 @@ After initializing a new repository:
 4. Read back the active ruleset and effective rules on the default branch and
    `develop`, and confirm a pull request actually emits the required checks.
    Protecting an empty or nonexistent check name does not provide useful CI.
+5. Before creating `develop` later, run CI on the exact commit that will become
+   its initial tip. For a default-branch commit, dispatch the CI workflow on that
+   branch and confirm its successful `verify` check belongs to that exact SHA;
+   then create `develop` from that SHA. Check enforcement on branch creation
+   deliberately remains enabled (`do_not_enforce_on_create: false`), so an
+   unchecked initial commit is rejected. No temporary bypass is needed.
 
 This is an explicit setup step; storing JSON here does not automatically
-protect repositories created in the future. Do not add a broad administration
-token to a public workflow to simulate account-wide inheritance.
+protect repositories created in the future.
 
 GitHub references: [rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets),
 [organization rulesets](https://docs.github.com/en/organizations/managing-organization-settings/creating-rulesets-for-repositories-in-your-organization),

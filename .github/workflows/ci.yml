@@ -20,37 +20,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - name: Test invalid shared files and policy drift
+        run: python3 -m unittest discover -s tests
       - name: Validate shared community files and the branch policy
-        run: |
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          import re
-
-          required = ['README.md', 'CONTRIBUTING.md', 'AGENTS.md',
-                      '.github/pull_request_template.md', '.github/ISSUE_TEMPLATE/bug_report.md',
-                      '.github/ISSUE_TEMPLATE/task.md', '.github/ISSUE_TEMPLATE/config.yml',
-                      'branch-protection/README.md', 'branch-protection/ruleset.json']
-          for name in required:
-              if not Path(name).read_text(encoding='utf-8').strip():
-                  raise SystemExit(f'Empty shared file: {name}')
-          for path in Path('.').rglob('*.md'):
-              if '.git' in path.parts:
-                  continue
-              for target in re.findall(r'(?<!!)\[[^\]]*\]\(([^)]+)\)', path.read_text()):
-                  target = target.split('#', 1)[0]
-                  if target and not re.match(r'[a-zA-Z][a-zA-Z0-9+.-]*:', target):
-                      if not (path.parent / target).exists():
-                          raise SystemExit(f'Broken local link in {path}: {target}')
-          policy = json.loads(Path('branch-protection/ruleset.json').read_text())
-          assert policy['enforcement'] == 'active' and policy['bypass_actors'] == []
-          assert policy['conditions']['ref_name'] == {
-              'include': ['~DEFAULT_BRANCH', 'refs/heads/develop'], 'exclude': []}
-          rules = {rule['type']: rule for rule in policy['rules']}
-          assert {'deletion', 'non_fast_forward', 'pull_request', 'required_status_checks'} <= rules.keys()
-          assert rules['pull_request']['parameters']['required_review_thread_resolution'] is True
-          checks = rules['required_status_checks']['parameters']
-          assert checks['strict_required_status_checks_policy'] is True
-          assert checks['required_status_checks'] == [{'context': 'verify', 'integration_id': 15368}]
-          print('Shared files, local links and branch policy are valid')
-          PY
+        run: python3 scripts/validate_repository.py
