@@ -47,6 +47,46 @@ must identify that revision and explain its applicability.
 - Check or scenario — result and evidence:
 - Outstanding checks or limitations, if any:
 
+## Loop Report
+
+<!--
+Loop PRs only: remove this entire section for non-Loop work.
+Use coordinator-supplied records, not inferred reviews or timing.
+Full semantics and fictional examples:
+https://github.com/Sottti/.github/blob/main/docs/loop-report.md
+Identify the as-of head/time and covered records, including unavailable history.
+Counts describe completed attributable reviews, not approval. Zero applies only
+within known coverage; do not silently reset missing earlier Loop activity.
+-->
+
+Snapshot: <!-- head, UTC time, covered records and history limitations -->
+
+| Specialist Reviewer | Review Rounds |
+| --- | --- |
+| Compose | <!-- count --> |
+| State And Concurrency | <!-- count --> |
+| Data | <!-- count --> |
+| Architecture | <!-- count --> |
+| Security | <!-- count --> |
+| Local Test | <!-- count --> |
+| Connected Test | <!-- count --> |
+
+**Approximate elapsed time**
+
+<!--
+One interval per assignment/attempt, outside the reviewer table: role and safe
+assignment label, original candidate, start/result times and approximate duration.
+Separate resumed/follow-up intervals; mark interrupted work partial, unfinished
+work in progress and missing timestamps unavailable. Tools/waits may contribute.
+Do not sum overlapping intervals or add role/run totals. Preserve original heads
+and any mechanical carry-forward reference. Refresh from supplied records without
+recursive self-timing updates. Add Exceptions only for noteworthy events; keep
+missing selected reviews blocking. Outside-scope follow-up links belong in the
+coordinator's human summary. Local/Connected Tests remain separate supplied content.
+-->
+
+- <!-- assignment interval -->
+
 ## Related
 
 <!--
