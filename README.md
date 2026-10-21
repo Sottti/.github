@@ -81,3 +81,10 @@ repository. Other repositories need a corresponding routing reference in their
 own applicable agent entrypoint. Agents following that guidance read the shared
 title rules and selected template before composing a title or body, including
 when creating through an API that does not populate templates automatically.
+
+## Branch protection
+
+[Branch protection](branch-protection/README.md) owns the shared merge policy,
+repository-specific required checks and the setup step for new repositories.
+Rulesets and workflows are repository settings and files; GitHub does not
+inherit them from this defaults repository.
