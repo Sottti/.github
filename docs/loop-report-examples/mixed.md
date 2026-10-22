@@ -56,8 +56,9 @@ candidate; parallel intervals overlap and are not totaled.
 
 - General Coordinator `B01`, current candidate `demo-h2`: started 08:59; in progress at snapshot.
 - Planner `B02`, `demo-h1`: 09:00–09:05; approximately 5 minutes.
-- Implementer `B03`, `demo-h1`: 09:05–09:12; approximately 7 minutes, including tool waits.
+- Implementer `B03`, readiness on taken-over `demo-h1`: 09:05–09:12; approximately 7 minutes, including tool waits.
 - Implementer follow-up `B04`, produced `demo-h2`: 09:20–09:24; approximately 4 minutes, separate from `B03`.
+- Review Coordinator `B05`, `demo-h1`: 09:12–09:17; approximately 5 minutes through internal approval.
 - Compose `C1`, `demo-h1`: 09:12–09:15; approximately 3 minutes.
 - State And Concurrency `S1`, first attempt on `demo-h2`: start 09:25, interrupted checkpoint 09:26; approximately 1 minute observed, **partial**, no result endpoint.
 - State And Concurrency `S1`, resumed attempt on `demo-h2`: 09:29–09:31; approximately 2 minutes through returned feedback. The request counts once.

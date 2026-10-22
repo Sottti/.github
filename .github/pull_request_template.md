@@ -80,9 +80,9 @@ Separate resumed/follow-up intervals; mark interrupted work partial, unfinished
 work in progress and missing timestamps unavailable. Tools/waits may contribute.
 Do not sum overlapping intervals or add role/run totals. Preserve original heads
 and any mechanical carry-forward reference. Refresh from supplied records without
-recursive self-timing updates. Add Exceptions only for noteworthy events; keep
-missing selected reviews blocking. Use ### Exceptions after the intervals only for
-noteworthy events; omit that heading when none apply. Outside-scope follow-up links belong in the
+recursive self-timing updates. Add ### Exceptions after the intervals only for
+noteworthy events; omit the heading when none apply. Keep missing selected reviews
+blocking. Outside-scope follow-up links belong in the
 coordinator's human summary. Local/Connected Tests remain separate supplied content.
 -->
 
