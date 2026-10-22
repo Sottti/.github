@@ -53,7 +53,7 @@ must identify that revision and explain its applicability.
 Loop PRs only: remove this entire section for non-Loop work.
 Use coordinator-supplied records, not inferred reviews or timing.
 Full semantics and fictional examples:
-https://github.com/Sottti/.github/blob/main/docs/loop-report.md
+https://github.com/Sottti/.github/blob/develop/docs/loop-report.md
 Identify the as-of head/time and covered records, including unavailable history.
 Counts describe completed attributable reviews, not approval. Zero applies only
 within known coverage; do not silently reset missing earlier Loop activity.
