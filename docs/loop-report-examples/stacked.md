@@ -8,7 +8,7 @@ the first PR in the stack and keeps its implementation diff separate.
 ## Verification
 
 - Original exercised revision: fictional `demo-h1`; fixture evidence `L1/C1` below.
-- Current snapshot: fictional `demo-h2`, a conflict-free mechanical synchronization.
+- Later report-refresh snapshot: fictional `demo-h2`, a conflict-free mechanical synchronization.
 - Carry-forward `M1`: `demo-h1 → demo-h2`; the supplied coordinator assessment preserves prior review/execution provenance and states no relevant impact. No specialist was requested merely to refresh this report.
 - Current-head CI `CI2` — passed in this fictional scenario. Source synchronization alone would not establish applicability or fresh execution.
 
@@ -36,9 +36,15 @@ the target repository's obligations. Assessment, execution and gaps are distinct
 ## Loop Report
 
 Snapshot: `demo-h2`, 2026-01-10 10:00 UTC. Coverage: run `sample-c`, records
-`C01–C12`; prior history reconciled. All completed specialist responses below
+`C01–C14`; prior history reconciled. All completed specialist responses below
 reviewed `demo-h1`. Carry-forward `M1` preserves them for `demo-h2`; it is not
 new feedback and adds no rounds. Counts are activity, not approval.
+
+The PR was already jointly approved at `demo-h1`; PR Monitor completed its
+publication/approval assignment before PR Integrator started. The base advance
+was detected during PR Integrator’s final refresh; the mechanical sync and
+coordinator assessment returned it to final CI/merge watch. This is a later
+report refresh, not the initial PR adoption.
 
 | Specialist Reviewer | Review Rounds |
 | --- | --- |
@@ -64,10 +70,12 @@ Intervals remain attributed to their original candidate and are not summed.
 - Local Test `C06`, `demo-h1`: 09:20–09:26; approximately 6 minutes.
 - Connected Test `C07`, `demo-h1`: 09:20–09:27; approximately 7 minutes.
 - Review Coordinator `C08`, `demo-h1`: 09:20–09:30; approximately 10 minutes.
+- PR Monitor `C13`, `demo-h1`: 09:31–09:35; approximately 4 minutes through publication and joint approval.
+- PR Integrator `C14`, original candidate `demo-h1`: started 09:36; in progress at snapshot, watching final CI/merge at `demo-h2` under carry-forward `M1`.
 - Implementer follow-up `C09`, `demo-h2`: 09:45–09:48; approximately 3 minutes for mechanical synchronization, not a new specialist review.
 - Review Coordinator follow-up `C10`, `demo-h2`: 09:49–09:51; approximately 2 minutes for the supplied applicability assessment, not specialist feedback.
 - General Coordinator `C11`, current candidate `demo-h2`: started 08:59; in progress at snapshot. Earlier candidate events remain attributed to `demo-h1` in the covered records.
-- PR Monitor `C12`, `demo-h2`: started 09:52; in progress at snapshot.
+- PR Monitor report-refresh follow-up `C12`, `demo-h2`: started 09:52; in progress at snapshot.
 
 ### Exceptions
 

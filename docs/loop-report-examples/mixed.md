@@ -8,12 +8,17 @@ request was resumed, and a separate selected review is still missing.
 ## Details
 
 This illustrative takeover reconciles known prior Loop records with the new run.
+The existing PR was adopted at `demo-h1` after internal approval at 09:17 UTC:
+Compose `C1` and Architecture `A1` had returned, with no selected review missing.
+A later correction produced `demo-h2` at 09:24. Its newly selected State And
+Concurrency, Security and Local Test reviews and Compose delta followed; the
+Security failure happened after PR Monitor had adopted the PR.
 
 ## Verification
 
 - Tested revision: fictional `demo-h2`.
 - Local scenario `V1` — the refresh preserves the draft.
-- Readiness — blocked on the still-missing selected Security review. Activity counts do not grant approval.
+- Internal approval/merge — blocked on the still-missing selected Security review. Activity counts do not grant approval.
 
 ## Loop Report
 
@@ -49,19 +54,19 @@ partial response, tool call, advice attempt and an unreviewed intermediate commi
 All endpoints below are UTC on 2026-01-10. The report preserves each assignment's
 candidate; parallel intervals overlap and are not totaled.
 
-- General Coordinator `B01`, `demo-h2`: started 08:59; in progress at snapshot.
+- General Coordinator `B01`, current candidate `demo-h2`: started 08:59; in progress at snapshot.
 - Planner `B02`, `demo-h1`: 09:00–09:05; approximately 5 minutes.
-- Implementer `B03`, `demo-h1`: 09:05–09:20; approximately 15 minutes, including tool waits.
-- Implementer resumed `B04`, `demo-h2`: 09:30–09:37; approximately 7 minutes, separate from `B03`.
-- Compose `C1`, `demo-h1`: 09:20–09:24; approximately 4 minutes.
-- State And Concurrency `S1`, first attempt on `demo-h2`: start 09:21, interrupted checkpoint 09:23; approximately 2 minutes observed, **partial**, no result endpoint.
-- State And Concurrency `S1`, resumed attempt on `demo-h2`: 09:26–09:31; approximately 5 minutes through returned feedback. The request counts once.
+- Implementer `B03`, `demo-h1`: 09:05–09:12; approximately 7 minutes, including tool waits.
+- Implementer follow-up `B04`, produced `demo-h2`: 09:20–09:24; approximately 4 minutes, separate from `B03`.
+- Compose `C1`, `demo-h1`: 09:12–09:15; approximately 3 minutes.
+- State And Concurrency `S1`, first attempt on `demo-h2`: start 09:25, interrupted checkpoint 09:26; approximately 1 minute observed, **partial**, no result endpoint.
+- State And Concurrency `S1`, resumed attempt on `demo-h2`: 09:29–09:31; approximately 2 minutes through returned feedback. The request counts once.
 - Architecture `A1`, `demo-h1`: returned result retained; start timestamp unavailable, elapsed time **unavailable**.
-- Security `Q1`, `demo-h2`: 09:24–09:25 through failure; approximately 1 minute for the failed attempt, no review result.
-- Review Coordinator `B10`, `demo-h2`: started 09:20; in progress at snapshot.
-- Compose follow-up `C2`, `demo-h2`: 09:32–09:36; approximately 4 minutes.
+- Security `Q1`, `demo-h2`: 09:27–09:28 through failure; approximately 1 minute for the failed attempt, no review result.
+- Review Coordinator `B10`, follow-up on `demo-h2`: started 09:25; in progress at snapshot.
+- Compose follow-up `C2`, `demo-h2`: 09:32–09:36; approximately 4 minutes. Duplicate result delivery did not change the 09:36 endpoint.
 - Local Test `L1`, `demo-h2`: 09:32–09:35; approximately 3 minutes, overlapping `C2`.
-- PR Monitor `B14`, `demo-h2`: started 09:38; in progress at snapshot.
+- PR Monitor `B14`, adopted `demo-h1` after internal approval: started 09:18; in progress at snapshot. The subsequent `demo-h2` correction remains under review.
 
 ### Exceptions
 

@@ -13,7 +13,7 @@ Correct a spelling error in the contribution guide.
 ## Loop Report
 
 Snapshot: `demo-h1`, 2026-01-10 09:10 UTC. Coverage: run `sample-a`, assignments
-`A01–A04`; prior Loop history checked and none exists. All specialists were
+`A01–A05`; prior Loop history checked and none exists. All specialists were
 unselected. Zero means no completed rounds in this coverage, not approval.
 
 | Specialist Reviewer | Review Rounds |
@@ -31,6 +31,7 @@ unselected. Zero means no completed rounds in this coverage, not approval.
 - General Coordinator `A01`, `demo-h1`: started 09:00 UTC; in progress at snapshot.
 - Planner `A02`, `demo-h1`: 09:01–09:03 UTC; approximately 2 minutes.
 - Implementer `A03`, `demo-h1`: 09:03–09:06 UTC; approximately 3 minutes, including preview tooling.
-- PR Monitor `A04`, `demo-h1`: started 09:08 UTC; in progress at snapshot.
+- Review Coordinator `A04`, `demo-h1`: 09:06–09:07 UTC; approximately 1 minute, selecting no specialists.
+- PR Monitor `A05`, `demo-h1`: started 09:08 UTC; in progress at snapshot.
 
 No PR Integrator assignment exists yet; there is no interval to report.
