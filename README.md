@@ -37,6 +37,11 @@ scope, acceptance criteria and planned checks; pull requests explain delivered
 behavior and evidence. Repository-specific contribution and verification
 guidance still applies.
 
+Loop PRs also include a conditional [Loop Report](docs/loop-report.md) with
+specialist review activity, approximate assignment intervals and noteworthy
+exceptions. Non-Loop PRs remove that entire section. A local template override
+still takes precedence; Loop publication supplies the report alongside it.
+
 Follow the [shared issue and PR title rules](CONTRIBUTING.md#issue-and-pull-request-titles).
 The template provides guidance; it does not enforce titles or workflow behavior.
 
