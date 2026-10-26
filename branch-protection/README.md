@@ -21,7 +21,7 @@ them. A workflow's display name is not necessarily its job's check name.
 | Android-App-Template | Build & Validate; Analyze (actions); Analyze (java-kotlin); CodeQL |
 | RollerCoasters | Build; JVM Tests |
 | Morylia | Validate Gradle wrapper JAR; Resolve and validate Gradle dependencies |
-| Agent-Workflows | Python 3.9; Python 3.14 |
+| Agent-Workflows | verify |
 | Sotti-Web | verify |
 | Morylia-Dashboard-Web | verify: dashboard build, validators and Node tests |
 | Morylia-Dashboard-Data | verify: tracked JSON syntax, unique keys and finite constants |
