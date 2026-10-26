@@ -18,11 +18,11 @@ The templates originated from Sottti/Morylia commit
 made neutral. Their title prompts now link to the shared title rules below.
 
 Agents read inherited templates from this repository's
-`.github/ISSUE_TEMPLATE/` folder on `main`, using the GitHub contents API:
+`.github/ISSUE_TEMPLATE/` folder on `develop`, using the GitHub contents API:
 
 ```sh
-gh api 'repos/Sottti/.github/contents/.github/ISSUE_TEMPLATE/bug_report.md?ref=main' -H 'Accept: application/vnd.github.raw+json'
-gh api 'repos/Sottti/.github/contents/.github/ISSUE_TEMPLATE/task.md?ref=main' -H 'Accept: application/vnd.github.raw+json'
+gh api 'repos/Sottti/.github/contents/.github/ISSUE_TEMPLATE/bug_report.md?ref=develop' -H 'Accept: application/vnd.github.raw+json'
+gh api 'repos/Sottti/.github/contents/.github/ISSUE_TEMPLATE/task.md?ref=develop' -H 'Accept: application/vnd.github.raw+json'
 ```
 
 A repository with any file in its own `.github/ISSUE_TEMPLATE/` folder uses none
@@ -49,14 +49,14 @@ For stacked PRs, use one sibling PR Stack section with raw PR URLs in dependency
 order and exactly one `**This PR**` marker. Remove unused optional sections.
 
 Inherited files are not included in other repositories' clones. Agents read the
-current shared PR template from this repository's `main` branch before preparing
+current shared PR template from this repository's `develop` branch before preparing
 a PR body:
 
 ```sh
-gh api 'repos/Sottti/.github/contents/.github/pull_request_template.md?ref=main' -H 'Accept: application/vnd.github.raw+json'
+gh api 'repos/Sottti/.github/contents/.github/pull_request_template.md?ref=develop' -H 'Accept: application/vnd.github.raw+json'
 ```
 
-The shared template takes effect after it merges into `main`. A repository's
+The shared template takes effect after it merges into `develop`. A repository's
 local PR templates take precedence over this default. Check the root, `docs`
 and `.github` directories, including their `PULL_REQUEST_TEMPLATE` subdirectories,
 before relying on inheritance. Keep account-wide template changes here instead
@@ -72,7 +72,7 @@ issues, and scope-appropriate PR titles. All three templates link to it.
 Read the current rules before creating an issue or PR:
 
 ```sh
-gh api 'repos/Sottti/.github/contents/CONTRIBUTING.md?ref=main' -H 'Accept: application/vnd.github.raw+json'
+gh api 'repos/Sottti/.github/contents/CONTRIBUTING.md?ref=develop' -H 'Accept: application/vnd.github.raw+json'
 ```
 
 A local `CONTRIBUTING` file takes precedence over the shared contribution guide
