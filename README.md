@@ -68,7 +68,8 @@ of copying the template into other repositories. See GitHub's guide to
 [CONTRIBUTING.md](CONTRIBUTING.md#issue-and-pull-request-titles) is the canonical
 owner of issue and PR naming rules, including uppercase theme prefixes for
 coordinated issue groups, a leading `[U] ` before the theme prefix for umbrella
-issues, and scope-appropriate PR titles. All three templates link to it.
+issues, an optional `[SU] ` for sub-umbrella issues, and scope-appropriate PR
+titles. All three templates link to it.
 Read the current rules before creating an issue or PR:
 
 ```sh
