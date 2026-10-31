@@ -40,13 +40,35 @@ For example:
 [U] TEST RULES REVIEW: Align test conventions across repositories
 ```
 
-Only umbrella issues use `[U]`; other issues keep the normal title format.
+An umbrella whose children split into distinct concerns may group them under
+sub-umbrella issues, one per concern. A sub-umbrella is a sub-issue of its
+umbrella and coordinates part of the umbrella's group. Its title must begin
+with the literal marker `[SU]` followed by one space, before the same theme
+prefix:
+
+```text
+[SU] THEME PREFIX: Sub-umbrella issue summary
+```
+
+For example:
+
+```text
+[SU] TEST RULES REVIEW: Align instrumented test conventions
+```
+
+Sub-umbrellas are optional. Keep children directly under the umbrella when the
+group is small or has a single concern. GitHub allows one parent per issue, so
+a sub-umbrella lists any child that already has another parent instead of
+holding it as a sub-issue.
+
+Only umbrella issues use `[U]` and only sub-umbrella issues use `[SU]`; other
+issues keep the normal title format.
 
 A PR title matches its associated issue title as closely as its scope permits,
 preserving the shared uppercase theme prefix when present and omitting the
-issue-only `[U]` marker. Otherwise, use the same title when the issue and PR
-scopes match. For a partial or narrower implementation, keep the relevant group
-prefix and adjust the descriptive portion to state what the PR delivers.
+issue-only `[U]` or `[SU]` marker. Otherwise, use the same title when the issue
+and PR scopes match. For a partial or narrower implementation, keep the relevant
+group prefix and adjust the descriptive portion to state what the PR delivers.
 
 Without an associated issue, use a concise title summarizing the PR's change.
 There is no need to create an issue solely for naming.
