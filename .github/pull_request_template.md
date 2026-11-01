@@ -40,10 +40,11 @@ Identify the tested revision and applicable checks, their outcomes,
 and supporting reports or screenshots. Summarize results here and
 link detailed logs. Include environment details when they affect proof.
 Distinguish passed, failed, pending, blocked, and not-required checks.
-Record applicable local verification and independent review. There is no
-automatic per-PR CI under the shared weekly-only policy; do not wait for or
-invent passing PR checks. Weekly/manual results apply to their tested source;
-manual success does not prove the weekly scheduler fired.
+Record applicable local verification and independent review. Most repositories
+use weekly/manual validation; do not wait for or invent nonexistent PR checks.
+Sottti/.github has an approved PR-validation exception: report its actual check
+result. Weekly/manual results apply to their tested source; manual success does
+not prove the weekly scheduler fired.
 Explain omissions and limitations. Evidence from an earlier revision
 must identify that revision and explain its applicability.
 -->

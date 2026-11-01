@@ -69,8 +69,8 @@ class RepositoryValidationTest(unittest.TestCase):
     def workflow(self):
         return parse_yaml((self.root / '.github/workflows/ci.yml').read_text(), 'ci.yml')
 
-    def test_automatic_events_and_indirect_callers_are_rejected(self):
-        for event in ('pull_request', 'pull_request_target', 'push', 'issue_comment',
+    def test_other_automatic_events_and_indirect_callers_are_rejected(self):
+        for event in ('schedule', 'pull_request_target', 'push', 'issue_comment',
                       'pull_request_review', 'pull_request_review_comment', 'merge_group',
                       'workflow_run', 'workflow_call', 'repository_dispatch', 'release',
                       'create', 'page_build', 'check_suite'):
@@ -79,32 +79,45 @@ class RepositoryValidationTest(unittest.TestCase):
                 workflow['on'][event] = None
                 with self.assertRaisesRegex(ValueError, 'Allow only'):
                     validate_workflow(workflow)
-        for value in ('push', ['schedule', 'pull_request']):
+        for value in ('push', ['pull_request', 'workflow_dispatch']):
             workflow = self.workflow()
             workflow['on'] = value
             with self.assertRaisesRegex(ValueError, 'Allow only'):
                 validate_workflow(workflow)
 
-    def test_schedule_drift_and_manual_removal_are_rejected(self):
-        for change in ('utc', 'monday', 'twice-weekly', 'no-manual'):
+    def test_pr_filters_and_missing_pr_or_manual_triggers_are_rejected(self):
+        for change in ('no-pr', 'no-manual', 'paths', 'branches', 'types'):
             workflow = self.workflow()
-            if change == 'utc':
-                workflow['on']['schedule'][0]['timezone'] = 'UTC'
-            elif change == 'monday':
-                workflow['on']['schedule'][0]['cron'] = '17 3 * * 1'
-            elif change == 'twice-weekly':
-                workflow['on']['schedule'].append({'cron': '17 3 * * 2'})
-            else:
+            if change == 'no-pr':
+                del workflow['on']['pull_request']
+            elif change == 'no-manual':
                 del workflow['on']['workflow_dispatch']
+            else:
+                filters = {'paths': ['README.md'], 'branches': ['develop'], 'types': ['opened']}
+                workflow['on']['pull_request'] = {change: filters[change]}
             with self.subTest(change=change), self.assertRaisesRegex(ValueError, 'Allow only'):
                 validate_workflow(workflow)
 
-    def test_pr_payload_gates_and_untrusted_sources_are_rejected(self):
+    def test_pr_skipping_and_untrusted_manual_sources_are_rejected(self):
         for condition in ("github.event.pull_request.draft == false", 'true',
                           "github.event_name == 'workflow_dispatch'", ''):
             workflow = self.workflow()
             workflow['jobs']['verify']['if'] = condition
             with self.subTest(condition=condition), self.assertRaisesRegex(ValueError, 'trusted develop'):
+                validate_workflow(workflow)
+
+    def test_superseded_runs_cancel_only_within_the_same_pr_or_manual_ref(self):
+        for change in ('no-cancellation', 'shared-group', 'ref-only', 'no-concurrency'):
+            workflow = self.workflow()
+            if change == 'no-cancellation':
+                workflow['concurrency']['cancel-in-progress'] = False
+            elif change == 'shared-group':
+                workflow['concurrency']['group'] = 'validation'
+            elif change == 'ref-only':
+                workflow['concurrency']['group'] = 'validation-${{ github.ref }}'
+            else:
+                del workflow['concurrency']
+            with self.subTest(change=change), self.assertRaisesRegex(ValueError, 'Cancel superseded'):
                 validate_workflow(workflow)
 
     def test_retained_coverage_cannot_skip_or_hide_failure(self):

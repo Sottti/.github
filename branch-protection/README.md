@@ -1,4 +1,4 @@
-# Branch protection and weekly validation
+# Branch protection and CI execution
 
 The common policy protects the default branch and `develop`, including a
 `develop` branch created later. It requires pull requests and resolved review
@@ -10,7 +10,7 @@ Local verification on the current candidate/base and independent review remain
 required before merge. Assess automated review findings and top-level comments;
 GitHub's conversation rule enforces resolved inline threads only.
 
-## Weekly-only Actions policy
+## Default weekly-only Actions policy
 
 No Actions or CI starts automatically on PR creation, updates, pushes or merges.
 Remove direct and indirect PR/push/tag/release/comment/merge-group/workflow-run
@@ -18,7 +18,10 @@ triggers and automatic caller chains, including managed workflows, CodeQL
 default setup and legacy publishing paths where applicable. Keep useful
 existing checks, thresholds, failure semantics, summaries and reports in the
 approved weekly slot or explicit manual execution. Add no meaningless CI.
-Talk-To-Google-Health publishes manually only.
+Talk-To-Google-Health publishes manually only. `Sottti/.github` is the narrow
+owner-approved exception: its shared-file validation runs on every PR and on
+explicit manual dispatch, with no weekly or post-merge run. No other repository
+inherits that execution policy from its templates.
 
 Do not require CI status checks on protected branches: weekly results do not
 validate each PR. Remove overlapping CI requirements from every effective
@@ -41,7 +44,7 @@ valid time. Do not replace these slots with fixed UTC or old Monday schedules.
 
 | Repository | Day | Local time |
 | --- | --- | --- |
-| .github | Sunday | 03:17 |
+| .github | Every PR and manual only | — |
 | Agent-Workflows | Monday | 03:17 |
 | Android-Interview-Practice | Tuesday | 02:17 |
 | Android-App-Template | Tuesday | 03:17 |
@@ -73,16 +76,24 @@ These are approved target slots, not claims that downstream rollouts or
 scheduled runs have completed. Each repository has its own implementation issue
 linked from [shared policy #13](https://github.com/Sottti/.github/issues/13).
 
-## This repository: validation and recovery
+## This repository: PR validation and manual recovery
 
-`.github/workflows/ci.yml` allows only `schedule` (`17 3 * * 0` with
-`timezone: Europe/Madrid`) and `workflow_dispatch`. The `verify` job runs on
-trusted `refs/heads/develop` in `Sottti/.github`, retaining:
+`.github/workflows/ci.yml` allows only `pull_request` and `workflow_dispatch`.
+Every PR, including draft PRs and updates, runs the `verify` job against the
+default checkout of its merge revision. Manual runs execute only from trusted
+`refs/heads/develop` in `Sottti/.github`. Both paths retain:
 
 ```sh
 python3 -m unittest discover -s tests
 python3 scripts/validate_repository.py
 ```
+
+The single standard Ubuntu job needs only read access to repository contents.
+It uses no secrets or `pull_request_target`, never runs on pushes or after
+merge, and has no scheduled trigger. Concurrency groups use the PR number
+(or manual ref), cancelling obsolete work for the same PR without cancelling
+other PRs. The validator tests enforce these trigger, source, cancellation,
+permission and coverage constraints.
 
 To recover explicitly, select **Repository validation → Run workflow → develop**
 in GitHub, or run:
@@ -98,11 +109,11 @@ cancellation, or runner/billing rejection before startup. Keep explicit manual
 recovery; do not create an automatic retry loop.
 
 Use the owner's existing GitHub Actions **Email** and **failed workflows only**
-preferences. Verify the actual account's notification routing and schedule
+preferences. Verify the actual account's notification routing and workflow
 actor: ownership alone does not establish the recipient. Keep mailbox details
 private. A controlled manual-failure email proves that path only; a passing
-schedule does not prove scheduled-failure delivery. Do not deliberately fail a
-production weekly suite to obtain it. No paid notification service is added.
+run does not prove failure-email delivery. Do not deliberately fail production
+validation to obtain it. No paid notification service is added.
 
 The original restoration in [#9](https://github.com/Sottti/.github/issues/9)
 is historical. Its future instructions and existing follow-up must preserve
@@ -142,6 +153,9 @@ branch naming does not install protection or validation.
 6. Run retained checks locally or manually, recording exact source/outcomes.
    Link the first genuine `schedule` run when available; keep scheduled proof
    explicitly pending until then. Manual verification is not scheduler proof.
+
+These setup defaults do not enable PR validation in other repositories.
+Only this repository uses the explicit PR/manual exception documented above.
 
 For a later `develop` branch, verify its intended tip locally and through review,
 then read back protection after creation. There is no required-check creation

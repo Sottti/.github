@@ -57,8 +57,8 @@ def validate_policy(policy):
 
 
 TRUSTED_JOB = """github.repository == 'Sottti/.github' &&
-github.ref == 'refs/heads/develop' &&
-(github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')"""
+(github.event_name == 'pull_request' ||
+(github.ref == 'refs/heads/develop' && github.event_name == 'workflow_dispatch'))"""
 RETAINED_COMMANDS = (
     'python3 -m unittest discover -s tests',
     'python3 scripts/validate_repository.py',
@@ -67,15 +67,19 @@ RETAINED_COMMANDS = (
 
 def validate_workflow(workflow):
     require(workflow.get('on') == {
-        'schedule': [{'cron': '17 3 * * 0', 'timezone': 'Europe/Madrid'}],
+        'pull_request': None,
         'workflow_dispatch': None,
-    }, 'Allow only Sunday 03:17 Europe/Madrid schedule and explicit manual dispatch')
+    }, 'Allow only unfiltered pull requests and explicit manual dispatch; no schedule')
     require(workflow.get('permissions') == {'contents': 'read'},
             'Validation needs only read access')
+    require(workflow.get('concurrency') == {
+        'group': 'validation-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}',
+        'cancel-in-progress': True,
+    }, 'Cancel superseded runs within each PR or manual ref without cancelling other PRs')
     require(set(workflow.get('jobs', {})) == {'verify'}, 'Retain the verify job inventory')
     job = workflow['jobs']['verify']
     require(' '.join(str(job.get('if', '')).split()) == ' '.join(TRUSTED_JOB.split()),
-            'Run schedule/manual validation only on trusted develop; never depend on PR payload')
+            'Run PR validation or manual validation on trusted develop')
     require(job.get('runs-on') == 'ubuntu-latest' and job.get('timeout-minutes') == 10,
             'Preserve the validation runner and timeout')
     require('uses' not in job and not job.get('continue-on-error'),
@@ -117,4 +121,4 @@ def validate_tree(root):
 
 if __name__ == '__main__':
     validate_tree(Path(__file__).resolve().parents[1])
-    print('Shared files, workflow YAML and weekly-only branch policy are valid')
+    print('Shared files, PR/manual workflow and branch policy are valid')
