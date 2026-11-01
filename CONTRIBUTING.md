@@ -105,15 +105,17 @@ automatic reusable-workflow caller chains. Retain useful coverage weekly in
 the [approved timetable](branch-protection/README.md#weekly-timetable), or on
 explicit manual dispatch. Do not add CI where no meaningful check exists.
 
-**Exception: `Sottti/.github`** validates its shared files on every pull
-request and on explicit manual dispatch from `develop`. It cancels superseded
-PR runs and has no weekly or post-merge run. This exception applies only to
-this public repository's small standard-Linux validation job, not to other
-repositories using these shared templates.
+**PR-validation exceptions: `Sottti/.github`, `Sottti/Android-App-Template`
+and `Sottti/RollerCoasters`.** These public repositories run their existing
+validation on every PR and allow manual dispatch from `develop`. They cancel
+superseded PR runs and have no weekly or post-merge CI. Android App Template
+also runs its existing advanced CodeQL analysis on PRs. Dependabot version
+updates retain their separate weekly schedules. These exceptions do not enable
+PR CI in other repositories that use the shared templates.
 
 There are no required per-PR CI status gates. For weekly-only repositories,
-do not wait for nonexistent PR checks. For `.github`, inspect the actual PR
-validation result. Do not create dummy successful jobs or restore retired CI
+do not wait for nonexistent PR checks. For the approved PR-validation exceptions, inspect the actual PR
+check results. Do not create dummy successful jobs or restore retired CI
 requirements.
 Local verification and independent review remain required; weekly failures
 can first reveal regressions after merge. A weekly or manual result proves
