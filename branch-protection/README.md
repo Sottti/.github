@@ -57,7 +57,13 @@ valid time. Do not replace these slots with fixed UTC or old Monday schedules.
 | OkHttp-Retrofit-Moshi-Picasso | No automation | — |
 | OkHttp-Volley-Gson | No automation | — |
 
-The four inactive Medium article companions marked **No automation** are exceptions\nto the weekly/manual policy: disable GitHub Actions and Dependabot entirely.\nThey run no scheduled, daily, PR, push or manual CI. Do not reintroduce automated\ndependency updates or restore the cancelled Milliscope weekly plan. Their source\nand local verification commands remain available for reference.\n\nThese are approved target slots, not claims that downstream rollouts or
+The four inactive Medium article companions marked **No automation** are exceptions
+to the weekly/manual policy: disable GitHub Actions and Dependabot entirely.
+They run no scheduled, daily, PR, push or manual CI. Do not reintroduce automated
+dependency updates or restore the cancelled Milliscope weekly plan. Their source
+and local verification commands remain available for reference.
+
+These are approved target slots, not claims that downstream rollouts or
 scheduled runs have completed. Each repository has its own implementation issue
 linked from [shared policy #13](https://github.com/Sottti/.github/issues/13).
 
