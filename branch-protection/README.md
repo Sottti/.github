@@ -45,7 +45,6 @@ valid time. Do not replace these slots with fixed UTC or old Monday schedules.
 | Agent-Workflows | Monday | 03:17 |
 | Android-Interview-Practice | Tuesday | 02:17 |
 | Android-App-Template | Tuesday | 03:17 |
-| dependabot | Wednesday | 02:17 |
 | Morylia | Wednesday | 03:17 |
 | Morylia-Dashboard-Data | Thursday | 02:17 |
 | Morylia-Dashboard | Thursday | 03:17 |
@@ -56,12 +55,19 @@ valid time. Do not replace these slots with fixed UTC or old Monday schedules.
 | Material-Design-Nav-Drawer | No automation | — |
 | OkHttp-Retrofit-Moshi-Picasso | No automation | — |
 | OkHttp-Volley-Gson | No automation | — |
+| My-Lists | No automation | — |
+| Watch | No automation | — |
+| SpaceX-Rocket-Launches | No automation | — |
 
-The four inactive Medium article companions marked **No automation** are exceptions
+The seven historical repositories marked **No automation** are exceptions
 to the weekly/manual policy: disable GitHub Actions and Dependabot entirely.
 They run no scheduled, daily, PR, push or manual CI. Do not reintroduce automated
-dependency updates or restore the cancelled Milliscope weekly plan. Their source
-and local verification commands remain available for reference.
+dependency updates or restore the cancelled Milliscope weekly plan. This covers
+the four inactive Medium article companions, the historical personal projects
+My-Lists and Watch, and the historical interview project SpaceX-Rocket-Launches.
+Their source and local verification commands remain available for reference.
+The retired Dependabot demonstration repository has no weekly slot; do not
+recreate it or restore its cancelled CI plan.
 
 These are approved target slots, not claims that downstream rollouts or
 scheduled runs have completed. Each repository has its own implementation issue
