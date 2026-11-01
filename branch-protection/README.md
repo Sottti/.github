@@ -49,10 +49,19 @@ valid time. Do not replace these slots with fixed UTC or old Monday schedules.
 | Morylia | Wednesday | 03:17 |
 | Morylia-Dashboard-Data | Thursday | 02:17 |
 | Morylia-Dashboard | Thursday | 03:17 |
-| Milliscope | Friday | 02:17 |
+| Milliscope | No automation | — |
 | RollerCoasters | Friday | 03:17 |
 | Web | Saturday | 03:17 |
 | Talk-To-Google-Health | Manual only | — |
+| Material-Design-Nav-Drawer | No automation | — |
+| OkHttp-Retrofit-Moshi-Picasso | No automation | — |
+| OkHttp-Volley-Gson | No automation | — |
+
+The four inactive Medium article companions marked **No automation** are exceptions
+to the weekly/manual policy: disable GitHub Actions and Dependabot entirely.
+They run no scheduled, daily, PR, push or manual CI. Do not reintroduce automated
+dependency updates or restore the cancelled Milliscope weekly plan. Their source
+and local verification commands remain available for reference.
 
 These are approved target slots, not claims that downstream rollouts or
 scheduled runs have completed. Each repository has its own implementation issue
