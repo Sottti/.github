@@ -91,7 +91,7 @@ when creating through an API that does not populate templates automatically.
 ## Branch protection
 
 [Branch protection](branch-protection/README.md) owns the shared merge policy,
-the weekly validation timetable, this repository's PR-validation exception and
+the weekly validation timetable, the approved PR-validation exceptions and
 the setup step for new repositories.
 Rulesets and workflows are repository settings and files; GitHub does not
 inherit them from this defaults repository.

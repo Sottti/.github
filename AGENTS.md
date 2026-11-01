@@ -30,5 +30,5 @@ run its existing validation on every PR and on explicit manual dispatch from
 `develop`, cancel superseded PR runs, and use no weekly or post-merge run.
 Run applicable local checks, assess the actual PR check and obtain independent
 review before merge. Do not add required CI status gates or revive retired
-restoration instructions. Other repositories retain their own approved weekly,
-manual-only or no-automation policy; this exception does not enable their PR CI.
+restoration instructions. Other repositories retain their own approved PR, weekly,
+manual-only or no-automation policy; shared templates do not enable their CI.

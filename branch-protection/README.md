@@ -18,10 +18,12 @@ triggers and automatic caller chains, including managed workflows, CodeQL
 default setup and legacy publishing paths where applicable. Keep useful
 existing checks, thresholds, failure semantics, summaries and reports in the
 approved weekly slot or explicit manual execution. Add no meaningless CI.
-Talk-To-Google-Health publishes manually only. `Sottti/.github` is the narrow
-owner-approved exception: its shared-file validation runs on every PR and on
-explicit manual dispatch, with no weekly or post-merge run. No other repository
-inherits that execution policy from its templates.
+Talk-To-Google-Health publishes manually only. The owner-approved exceptions
+are `Sottti/.github`, `Sottti/Android-App-Template` and `Sottti/RollerCoasters`:
+their existing validation runs on every PR and on manual dispatch, without
+weekly or post-merge CI. Android App Template retains advanced CodeQL analysis.
+Dependabot version-update schedules are separate and unchanged. Other repositories
+do not inherit this execution policy from the shared templates.
 
 Do not require CI status checks on protected branches: weekly results do not
 validate each PR. Remove overlapping CI requirements from every effective
@@ -47,12 +49,12 @@ valid time. Do not replace these slots with fixed UTC or old Monday schedules.
 | .github | Every PR and manual only | — |
 | Agent-Workflows | Monday | 03:17 |
 | Android-Interview-Practice | Tuesday | 02:17 |
-| Android-App-Template | Tuesday | 03:17 |
+| Android-App-Template | Every PR and manual only | — |
 | Morylia | Wednesday | 03:17 |
 | Morylia-Dashboard-Data | Thursday | 02:17 |
 | Morylia-Dashboard | Thursday | 03:17 |
 | Milliscope | No automation | — |
-| RollerCoasters | Friday | 03:17 |
+| RollerCoasters | Every PR and manual only | — |
 | Web | Saturday | 03:17 |
 | Talk-To-Google-Health | Manual only | — |
 | Material-Design-Nav-Drawer | No automation | — |
@@ -155,7 +157,8 @@ branch naming does not install protection or validation.
    explicitly pending until then. Manual verification is not scheduler proof.
 
 These setup defaults do not enable PR validation in other repositories.
-Only this repository uses the explicit PR/manual exception documented above.
+The three named repositories use their explicit PR/manual exceptions; all
+other repositories retain their approved weekly, manual-only or no-automation policy.
 
 For a later `develop` branch, verify its intended tip locally and through review,
 then read back protection after creation. There is no required-check creation
