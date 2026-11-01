@@ -89,10 +89,31 @@ repositories.
 ## Protected branches and merge requirements
 
 Follow the [common branch protection policy](branch-protection/README.md).
-Use pull requests for the default branch and `develop`, pass the repository's
-required CI checks against the current base, and address review feedback before
-merging. Resolve completed inline review threads; handle top-level comments
+Use pull requests for the default branch and `develop`, run the applicable
+local verification on the current candidate and base, obtain the required
+independent review, and address review feedback before merging. Resolve completed inline review threads; handle top-level comments
 explicitly as well. Do not bypass unmet gates.
 
 Apply the policy when setting up a new repository: GitHub does not inherit
 branch rules from this defaults repository or from an app template.
+
+## Weekly validation
+
+The owner-approved policy is zero automatic Actions or CI on PR creation,
+updates, pushes or merges, including comment, merge-group, workflow-run and
+automatic reusable-workflow caller chains. Retain useful coverage weekly in
+the [approved timetable](branch-protection/README.md#weekly-timetable), or on
+explicit manual dispatch. Do not add CI where no meaningful check exists.
+
+There are no required per-PR CI status checks. Do not wait for nonexistent PR
+checks, create dummy successful jobs, or restore retired CI requirements.
+Local verification and independent review remain required; weekly failures
+can first reveal regressions after merge. A weekly or manual result proves
+only its recorded source revision, not an individual PR. Report skipped,
+cancelled, failed and runner/billing admission failures distinctly.
+
+For this repository, run `python3 -m unittest discover -s tests` and
+`python3 scripts/validate_repository.py` locally. Hosted validation retains
+both commands on trusted `develop`, Sunday at 03:17 Europe/Madrid or by
+explicit manual dispatch. Genuine scheduled execution stays pending until a
+`schedule` run is observed; a manual success is not scheduler evidence.

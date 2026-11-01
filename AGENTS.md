@@ -21,3 +21,12 @@ Raw API creation does not populate templates automatically. Preserve applicable
 repository-specific metadata, contribution and verification policies, and read
 back the stored title and body after creation. If a shared source cannot be
 read, report that limitation instead of silently assuming a local copy is current.
+
+## Validation and delivery
+
+Read the current shared weekly-only policy in `CONTRIBUTING.md` and
+`branch-protection/README.md`. Run applicable local checks and independent
+review before merge. Do not wait for per-PR Actions checks or reintroduce
+automatic PR/push/comment/merge triggers, required CI status gates, or retired
+restoration instructions. Explicit manual runs and the approved weekly slot
+retain meaningful coverage; report their exact source and actual outcome.
