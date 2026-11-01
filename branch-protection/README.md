@@ -23,7 +23,7 @@ them. A workflow's display name is not necessarily its job's check name.
 | Morylia | Validate Gradle wrapper JAR; Resolve and validate Gradle dependencies |
 | Agent-Workflows | verify |
 | Sotti-Web | verify |
-| Morylia-Dashboard-Web | verify: dashboard build, validators and Node tests |
+| Morylia-Dashboard | verify: dashboard build, validators and Node tests |
 | Morylia-Dashboard-Data | verify: tracked JSON syntax, unique keys and finite constants |
 | Android-Interview-Practice | verify: content checks, TypeScript, production build and artifact privacy |
 | .github | verify: shared files, template/config YAML and policy JSON |
