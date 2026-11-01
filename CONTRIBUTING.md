@@ -97,7 +97,7 @@ explicitly as well. Do not bypass unmet gates.
 Apply the policy when setting up a new repository: GitHub does not inherit
 branch rules from this defaults repository or from an app template.
 
-## Weekly validation
+## CI execution
 
 The owner-approved policy is zero automatic Actions or CI on PR creation,
 updates, pushes or merges, including comment, merge-group, workflow-run and
@@ -105,8 +105,16 @@ automatic reusable-workflow caller chains. Retain useful coverage weekly in
 the [approved timetable](branch-protection/README.md#weekly-timetable), or on
 explicit manual dispatch. Do not add CI where no meaningful check exists.
 
-There are no required per-PR CI status checks. Do not wait for nonexistent PR
-checks, create dummy successful jobs, or restore retired CI requirements.
+**Exception: `Sottti/.github`** validates its shared files on every pull
+request and on explicit manual dispatch from `develop`. It cancels superseded
+PR runs and has no weekly or post-merge run. This exception applies only to
+this public repository's small standard-Linux validation job, not to other
+repositories using these shared templates.
+
+There are no required per-PR CI status gates. For weekly-only repositories,
+do not wait for nonexistent PR checks. For `.github`, inspect the actual PR
+validation result. Do not create dummy successful jobs or restore retired CI
+requirements.
 Local verification and independent review remain required; weekly failures
 can first reveal regressions after merge. A weekly or manual result proves
 only its recorded source revision, not an individual PR. Report skipped,
@@ -114,6 +122,6 @@ cancelled, failed and runner/billing admission failures distinctly.
 
 For this repository, run `python3 -m unittest discover -s tests` and
 `python3 scripts/validate_repository.py` locally. Hosted validation retains
-both commands on trusted `develop`, Sunday at 03:17 Europe/Madrid or by
-explicit manual dispatch. Genuine scheduled execution stays pending until a
-`schedule` run is observed; a manual success is not scheduler evidence.
+both commands on the PR merge revision, or trusted `develop` for explicit
+manual dispatch. Local and manual results apply only to the tested revision;
+neither substitutes for the actual PR check result.

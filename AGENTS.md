@@ -24,9 +24,11 @@ read, report that limitation instead of silently assuming a local copy is curren
 
 ## Validation and delivery
 
-Read the current shared weekly-only policy in `CONTRIBUTING.md` and
-`branch-protection/README.md`. Run applicable local checks and independent
-review before merge. Do not wait for per-PR Actions checks or reintroduce
-automatic PR/push/comment/merge triggers, required CI status gates, or retired
-restoration instructions. Explicit manual runs and the approved weekly slot
-retain meaningful coverage; report their exact source and actual outcome.
+Read the shared CI policy in `CONTRIBUTING.md` and
+`branch-protection/README.md`. This repository is the owner-approved exception:
+run its existing validation on every PR and on explicit manual dispatch from
+`develop`, cancel superseded PR runs, and use no weekly or post-merge run.
+Run applicable local checks, assess the actual PR check and obtain independent
+review before merge. Do not add required CI status gates or revive retired
+restoration instructions. Other repositories retain their own approved weekly,
+manual-only or no-automation policy; this exception does not enable their PR CI.
