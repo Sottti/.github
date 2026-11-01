@@ -1,22 +1,28 @@
 name: Repository validation
 
-on:
-  pull_request:
+"on":
+  schedule:
+    - cron: "17 3 * * 0"
+      timezone: "Europe/Madrid"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: validation-${{ github.event.pull_request.number || github.ref }}
+  group: validation-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   verify:
+    if: >-
+      github.repository == 'Sottti/.github' &&
+      github.ref == 'refs/heads/develop' &&
+      (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Check out the pull request merge
+      - name: Check out the trusted develop revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
