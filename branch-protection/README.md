@@ -22,7 +22,7 @@ Talk-To-Google-Health publishes manually only. The owner-approved exceptions
 are `Sottti/.github`, `Sottti/Android-App-Template` and `Sottti/RollerCoasters`:
 their existing validation runs on every PR and on manual dispatch, without
 weekly or post-merge CI. Android App Template retains advanced CodeQL analysis.
-Dependabot version-update schedules are separate and unchanged. Other repositories
+Dependabot follows the separate [monthly maintenance policy](#monthly-dependency-updates). Other repositories
 do not inherit this execution policy from the shared templates.
 
 Do not require CI status checks on protected branches: weekly results do not
@@ -35,6 +35,43 @@ No dummy successful PR job, temporary bypass or automatic retry loop is used.
 Weekly validation can discover a regression after merge. Contributors must run
 applicable local checks and complete independent review before merging; report
 the exact tested SHA and any remaining limitations.
+
+## Monthly dependency updates
+
+Dependabot version updates are enabled only for the nine repositories below.
+They check on the first day of each month in Europe/Madrid, independently of
+weekly CI. New or changed configuration may also trigger an initial check.
+
+| Repository | Ecosystems | Local time |
+| --- | --- | --- |
+| .github | GitHub Actions | 03:17 |
+| Agent-Workflows | pip checker requirements, GitHub Actions | 03:17 |
+| Android-Interview-Practice | npm/pnpm, GitHub Actions | 03:17 |
+| Android-App-Template | Gradle, GitHub Actions | 03:17 |
+| Morylia | Gradle / GitHub Actions | 08:30 / 09:00 |
+| Morylia-Dashboard | GitHub Actions | 03:17 |
+| Morylia-Dashboard-Data | GitHub Actions | 03:17 |
+| RollerCoasters | Gradle, GitHub Actions | 03:17 |
+| Web | Root application npm, GitHub Actions | 03:17 |
+
+Standard-runner Dependabot maintenance is an explicit allowed exception to the
+Actions restriction. GitHub does not charge these update jobs against included
+Actions minutes. Validation triggered by update PRs follows the repository's
+existing policy: public PR-validation exceptions keep their checks, while
+private repositories start no PR CI. Keep the CI triggers and weekly slots.
+
+Monthly scheduling applies to routine version updates. Security alerts and
+existing automatic security-update settings remain unchanged; security fixes,
+where enabled, respond to advisories independently of this monthly schedule.
+Preserve existing groups, labels, assignees, PR limits and rebase settings when
+changing an existing schedule. New configurations group minor/patch updates per
+ecosystem, keep major updates separate, disable automatic rebasing and limit
+each ecosystem to five open update PRs. Update PRs still require verification
+and review; no automatic merge is configured.
+
+The profile README repository `Sottti` has no Dependabot configuration. Do not
+enable dependency updates for historical repositories, including
+`Starling-Android-Interview`, or repositories outside the owner-approved list.
 
 ## Weekly timetable
 

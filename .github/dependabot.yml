@@ -1,0 +1,20 @@
+version: 2
+
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      time: "03:17"
+      timezone: "Europe/Madrid"
+    rebase-strategy: "disabled"
+    open-pull-requests-limit: 5
+    assignees:
+      - "Sottti"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"

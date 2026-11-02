@@ -110,7 +110,7 @@ and `Sottti/RollerCoasters`.** These public repositories run their existing
 validation on every PR and allow manual dispatch from `develop`. They cancel
 superseded PR runs and have no weekly or post-merge CI. Android App Template
 also runs its existing advanced CodeQL analysis on PRs. Dependabot version
-updates retain their separate weekly schedules. These exceptions do not enable
+updates use the separate [monthly maintenance policy](branch-protection/README.md#monthly-dependency-updates). These exceptions do not enable
 PR CI in other repositories that use the shared templates.
 
 There are no required per-PR CI status gates. For weekly-only repositories,
