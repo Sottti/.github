@@ -42,13 +42,14 @@ All slots use the IANA timezone **Europe/Madrid**, preserving local time across
 DST. The schedule runs the latest default-branch `develop` revision. GitHub
 may delay or drop a scheduled event; failure email cannot detect a missing run.
 At a DST spring-forward gap, GitHub advances a skipped local time to the next
-valid time. Do not replace these slots with fixed UTC or old Monday schedules.
+valid time. Preserve owner-approved local slots; do not restore superseded schedules
+or replace them with fixed UTC times.
 
 | Repository | Day | Local time |
 | --- | --- | --- |
 | .github | Every PR and manual only | — |
 | Agent-Workflows | Monday | 03:17 |
-| Android-Interview-Practice | Tuesday | 02:17 |
+| Android-Interview-Practice | Monday | 02:17 |
 | Android-App-Template | Every PR and manual only | — |
 | Morylia | Wednesday | 03:17 |
 | Morylia-Dashboard-Data | Thursday | 02:17 |
