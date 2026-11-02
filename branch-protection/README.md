@@ -56,7 +56,7 @@ or replace them with fixed UTC times.
 | Morylia-Dashboard | Thursday | 03:17 |
 | Milliscope | No automation | — |
 | RollerCoasters | Every PR and manual only | — |
-| Web | Saturday | 03:17 |
+| Web | Monday | 01:17 |
 | Talk-To-Google-Health | Manual only | — |
 | Material-Design-Nav-Drawer | No automation | — |
 | OkHttp-Retrofit-Moshi-Picasso | No automation | — |
