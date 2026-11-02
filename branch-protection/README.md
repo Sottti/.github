@@ -51,9 +51,9 @@ or replace them with fixed UTC times.
 | Agent-Workflows | Monday | 03:17 |
 | Android-Interview-Practice | Monday | 02:17 |
 | Android-App-Template | Every PR and manual only | — |
-| Morylia | Wednesday | 03:17 |
-| Morylia-Dashboard-Data | Thursday | 02:17 |
-| Morylia-Dashboard | Thursday | 03:17 |
+| Morylia | Monday | 04:17 |
+| Morylia-Dashboard-Data | Monday | 05:17 |
+| Morylia-Dashboard | Monday | 06:17 |
 | Milliscope | No automation | — |
 | RollerCoasters | Every PR and manual only | — |
 | Web | Monday | 01:17 |
