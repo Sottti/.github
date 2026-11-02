@@ -86,6 +86,27 @@ Templates and this guide provide creation guidance; they do not automatically
 enforce title wording or install agent instructions or workflows in other
 repositories.
 
+## PR scope and review rounds
+
+If a PR exceeds **1,000 changed lines** (additions plus deletions), or proceeding
+requires **more than five completed peer-review rounds**, assess whether it can
+be split into coherent, independently testable PRs. Split when practical. If
+splitting would be unnatural or inconvenient, record a brief reason in existing
+PR Details or a comment and continue. Routine assessments are autonomous.
+These are reassessment thresholds, not size or review-round caps.
+
+An issue may span multiple PRs. Keep each correction and its necessary tests
+together; preserve work, findings and dependency links when splitting. Count the
+current PR diff, including tests and documentation. Failed/interrupted attempts,
+cached responses and individual comments are not additional completed rounds.
+Preserve history across restarts, rebases and reviewer changes; unavailable
+history is not a fictional zero. Normal review acceptance, verification and
+merge requirements still apply.
+
+Agent-Workflows owns the [full procedure and shared tooling](https://github.com/Sottti/Agent-Workflows/blob/develop/docs/pr-scope.md).
+Templates supply author guidance; the shared agent workflow performs the check.
+No new reporting section, CI workflow or schedule is required.
+
 ## Protected branches and merge requirements
 
 Follow the [common branch protection policy](branch-protection/README.md).

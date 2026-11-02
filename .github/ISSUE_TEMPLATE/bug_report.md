@@ -17,6 +17,13 @@ Assign the issue's actual
 author using GitHub metadata; add relevant durable classification labels
 alongside Bug when useful. Replace the prompts before submitting.
 If the failure itself is unconfirmed, use Task for an investigation.
+Keep PRs focused. If a PR exceeds 1,000 changed lines (additions plus
+deletions), or requires more than five completed peer-review rounds, assess
+whether it can be split into coherent, independently testable PRs. Split when
+practical; otherwise briefly document why keeping it together is preferable
+and continue. These are reassessment thresholds, not hard limits. An issue
+may be implemented through multiple PRs. Full guidance:
+https://github.com/Sottti/.github/blob/develop/CONTRIBUTING.md#pr-scope-and-review-rounds
 -->
 
 ## Summary

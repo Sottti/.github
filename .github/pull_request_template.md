@@ -8,6 +8,13 @@ Without an issue, use a concise change title.
 Replace the prompts and remove unused optional sections.
 Describe the final change for someone unfamiliar with the discussion.
 Follow the repository's contribution and verification guidance.
+Keep PRs focused. If a PR exceeds 1,000 changed lines (additions plus
+deletions), or requires more than five completed peer-review rounds, assess
+whether it can be split into coherent, independently testable PRs. Split when
+practical; otherwise briefly document why keeping it together is preferable
+and continue. These are reassessment thresholds, not hard limits. An issue
+may be implemented through multiple PRs. Full guidance:
+https://github.com/Sottti/.github/blob/develop/CONTRIBUTING.md#pr-scope-and-review-rounds
 -->
 
 ## Summary
