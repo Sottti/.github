@@ -115,13 +115,9 @@ local verification on the current candidate and base, obtain the required
 independent review, and address review feedback before merging. Resolve completed inline review threads; handle top-level comments
 explicitly as well. Do not bypass unmet gates.
 
-Hosted Codex review is disabled, so the independent review is a local peer
-review. Before merging, have a fresh agent that did not write the change review
-the PR's current head, for example with Agent-Workflows' `own` skill or
-`/code-review` in a sub-agent. Fix the regressions and real-use findings, then
-have a different fresh reviewer check the new head until a round finds nothing
-to fix. Never substitute a self-review, and do not wait for or request hosted
-Codex review.
+Hosted Codex review is disabled, so the independent review is one local peer
+review: before merging, a fresh agent that did not write the change reviews the
+PR's current head, and its findings are addressed. Self-review does not count.
 
 Apply the policy when setting up a new repository: GitHub does not inherit
 branch rules from this defaults repository or from an app template.
