@@ -7,7 +7,7 @@ including administrators. Preserve unrelated security rules and stricter
 non-CI protections. Required approvals remain zero for solo maintenance.
 
 Local verification on the current candidate/base and independent review remain
-required before merge. Assess automated review findings and top-level comments;
+required before merge. Assess any review findings and top-level comments.
 GitHub's conversation rule enforces resolved inline threads only.
 
 ## Default weekly-only Actions policy
