@@ -117,8 +117,10 @@ explicitly as well. Do not bypass unmet gates.
 
 Hosted Codex review is disabled, so the independent review is one local peer
 review: before merging, a fresh agent that did not write the change reviews the
-PR's current head, and its findings are addressed. One review is enough: fixing
-its findings does not need another review. Self-review does not count.
+PR's current head, and its findings are addressed. One review is enough. When the
+fixes change logic, one fresh agent checks only the changes since the review;
+fixes to docs or tests, and a clean merge of the base, need no check. Self-review
+does not count.
 
 Apply the policy when setting up a new repository: GitHub does not inherit
 branch rules from this defaults repository or from an app template.
