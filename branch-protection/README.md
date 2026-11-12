@@ -93,7 +93,7 @@ or replace them with fixed UTC times.
 | Morylia-Dashboard | Monday | 00:38 |
 | Milliscope | No automation | — |
 | RollerCoasters | Every PR and manual only | — |
-| Web | Monday | 00:38 |
+| Web | Monday | 00:48 |
 | Talk-To-Google-Health | Manual only | — |
 | Material-Design-Nav-Drawer | No automation | — |
 | OkHttp-Retrofit-Moshi-Picasso | No automation | — |
@@ -101,6 +101,11 @@ or replace them with fixed UTC times.
 | My-Lists | No automation | — |
 | Watch | No automation | — |
 | SpaceX-Rocket-Launches | No automation | — |
+
+Web runs ten minutes after the others. The 00:38 workflows start about 21
+jobs together, above GitHub Free's 20-concurrent-job cap, and Web's eight
+visual shards share one 25-minute budget that queueing would consume. Keep
+Web offset rather than aligning it with the 00:38 slot.
 
 The seven historical repositories marked **No automation** are exceptions
 to the weekly/manual policy: disable GitHub Actions and Dependabot entirely.
