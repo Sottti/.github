@@ -93,7 +93,7 @@ or replace them with fixed UTC times.
 | Morylia-Dashboard | Monday | 00:38 |
 | Milliscope | No automation | — |
 | RollerCoasters | Every PR and manual only | — |
-| Web | Monday | 00:38 |
+| Web | Monday | 00:48 |
 | Talk-To-Google-Health | Manual only | — |
 | Material-Design-Nav-Drawer | No automation | — |
 | OkHttp-Retrofit-Moshi-Picasso | No automation | — |
