@@ -85,15 +85,15 @@ or replace them with fixed UTC times.
 | Repository | Day | Local time |
 | --- | --- | --- |
 | .github | Every PR and manual only | — |
-| Agent-Workflows | Monday | 03:17 |
-| Android-Interview-Practice | Monday | 02:17 |
+| Agent-Workflows | Monday | 00:38 |
+| Android-Interview-Practice | Monday | 00:38 |
 | Android-App-Template | Every PR and manual only | — |
-| Morylia | Monday | 04:17 |
-| Morylia-Dashboard-Data | Monday | 05:17 |
-| Morylia-Dashboard | Monday | 06:17 |
+| Morylia | Monday | 00:38 |
+| Morylia-Dashboard-Data | Monday | 00:38 |
+| Morylia-Dashboard | Monday | 00:38 |
 | Milliscope | No automation | — |
 | RollerCoasters | Every PR and manual only | — |
-| Web | Monday | 01:17 |
+| Web | Monday | 00:38 |
 | Talk-To-Google-Health | Manual only | — |
 | Material-Design-Nav-Drawer | No automation | — |
 | OkHttp-Retrofit-Moshi-Picasso | No automation | — |
@@ -167,7 +167,7 @@ repository. Repository templates copy files and branch contents; default
 branch naming does not install protection or validation.
 
 1. Keep the default branch named `develop`. If meaningful checks exist, retain
-   them weekly in an owner-approved staggered slot and allow explicit manual
+   them weekly in an owner-approved weekly slot and allow explicit manual
    execution on trusted `develop`. Never add automatic PR/push execution or a
    required status gate; a repository without meaningful checks needs no CI.
 2. Import [ruleset.json](ruleset.json) for a new repository, preserving any
