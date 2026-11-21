@@ -125,6 +125,24 @@ does not count.
 Apply the policy when setting up a new repository: GitHub does not inherit
 branch rules from this defaults repository or from an app template.
 
+## Merging
+
+When a pull request you opened meets every merge requirement in this guide,
+merge it yourself without asking. That means applicable local verification
+passed on the current head and base; in a PR-validation exception repository,
+the actual PR check passed on the current head; the fresh-agent peer review is
+done, its findings are addressed and any required follow-up check is done; all
+review threads and top-level comments are handled; and the branch is up to date
+with no conflicts. Any deploy that the merge triggers automatically in that
+repository is approved.
+
+Ask the owner first only when something is genuinely open: a failing, pending,
+cancelled, skipped or unrun check; an unresolved finding; a design, copy or
+artwork choice the owner has not made; scope that drifted from the request; or
+a change to CI workflows, hosting or deploy configuration, live branch
+protection or repository settings. This permission covers only pull requests
+you opened, not Dependabot or other contributors' pull requests.
+
 ## CI execution
 
 The owner-approved policy is zero automatic Actions or CI on PR creation,
