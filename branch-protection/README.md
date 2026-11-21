@@ -8,6 +8,8 @@ non-CI protections. Required approvals remain zero for solo maintenance.
 
 Local verification on the current candidate/base and independent review remain
 required before merge. Assess any review findings and top-level comments.
+Once every requirement is met, an agent merges a PR it opened without asking, as
+[CONTRIBUTING.md](../CONTRIBUTING.md#merging) describes.
 GitHub's conversation rule enforces resolved inline threads only.
 
 ## Default weekly-only Actions policy
@@ -67,7 +69,7 @@ Preserve existing groups, labels, assignees, PR limits and rebase settings when
 changing an existing schedule. New configurations group minor/patch updates per
 ecosystem, keep major updates separate, disable automatic rebasing and limit
 each ecosystem to five open update PRs. Update PRs still require verification
-and review; no automatic merge is configured.
+and review; GitHub auto-merge is not configured.
 
 The profile README repository `Sottti` has no Dependabot configuration. Do not
 enable dependency updates for historical repositories, including

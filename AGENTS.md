@@ -29,6 +29,9 @@ Read the shared CI policy in `CONTRIBUTING.md` and
 run its existing validation on every PR and on explicit manual dispatch from
 `develop`, cancel superseded PR runs, and use no weekly or post-merge run.
 Run applicable local checks, assess the actual PR check and obtain independent
-review before merge. Do not add required CI status gates or revive retired
-restoration instructions. Other repositories retain their own approved PR, weekly,
-manual-only or no-automation policy; shared templates do not enable their CI.
+review before merge. When every requirement is met and nothing is left for
+the owner to decide, merge your own PR without asking, as
+[Merging](CONTRIBUTING.md#merging) describes. Do not add required CI status
+gates or revive retired restoration instructions. Other repositories retain
+their own approved PR, weekly, manual-only or no-automation policy; shared
+templates do not enable their CI.
