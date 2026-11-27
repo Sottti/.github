@@ -7,7 +7,7 @@ import subprocess
 
 
 REQUIRED_FILES = [
-    'README.md', 'CONTRIBUTING.md', 'AGENTS.md', '.github/pull_request_template.md',
+    'README.md', 'CONTRIBUTING.md', 'AGENTS.md', 'CLAUDE.md', '.github/pull_request_template.md',
     '.github/ISSUE_TEMPLATE/bug_report.md', '.github/ISSUE_TEMPLATE/task.md',
     '.github/ISSUE_TEMPLATE/config.yml', 'branch-protection/README.md',
     'branch-protection/ruleset.json', '.github/workflows/ci.yml',
