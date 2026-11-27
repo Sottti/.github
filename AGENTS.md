@@ -35,3 +35,7 @@ the owner to decide, merge your own PR without asking, as
 gates or revive retired restoration instructions. Other repositories retain
 their own approved PR, weekly, manual-only or no-automation policy; shared
 templates do not enable their CI.
+
+## Second opinions
+
+Second opinions from other models (GPT, Gemini or Claude) run only on the owner's Mac, through the `second-opinion` skill from Sottti/Agent-Workflows. A cloud or remote session doesn't have it: if asked for one there, say that it only runs in a local session, and don't ask other models instead.
