@@ -78,7 +78,7 @@ automatically update local agent guidance and workflows; those consumers must
 read the shared sources explicitly.
 
 [AGENTS.md](AGENTS.md) supplies the explicit read path for agents in this
-repository. Other repositories need a corresponding routing reference in their
+repository; Claude Code loads it through [CLAUDE.md](CLAUDE.md). Other repositories need a corresponding routing reference in their
 own applicable agent entrypoint. Agents following that guidance read the shared
 title rules and selected template before composing a title or body, including
 when creating through an API that does not populate templates automatically.
